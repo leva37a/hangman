@@ -6,18 +6,6 @@ class Game
     @user_guesses = []
   end
 
-  def normalize_letter(letter)
-    letter = "Е" if letter == "Ё"
-    letter = "И" if letter == "Й"
-    letter
-  end
-
-  def normalized_letters
-    @letters.map do |letter|
-      normalize_letter(letter)
-    end
-  end
-
   def errors_made
     errors.length
   end
@@ -62,5 +50,19 @@ class Game
 
   def lost?
     errors_allowed == 0
+  end
+
+  private
+
+  def normalize_letter(letter)
+    letter = "Е" if letter == "Ё"
+    letter = "И" if letter == "Й"
+    letter
+  end
+
+  def normalized_letters
+    @letters.map do |letter|
+      normalize_letter(letter)
+    end
   end
 end
