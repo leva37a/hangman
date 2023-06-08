@@ -9,10 +9,12 @@ class ConsoleInterface
   end
 
   def print_out
+    word = "Слово: #{word_to_show.join(" ")}".colorize(:blue)
+    faults_made = "Ошибки (#{@game.errors_made}): #{errors_to_show}".colorize(:red)
     <<~END
-    Слово: #{word_to_show.join(" ")}
-    #{figure}
-    Ошибки (#{@game.errors_made}): #{errors_to_show}
+    #{word}
+    #{figure.yellow}
+    #{faults_made}
     У вас осталось ошибок: #{@game.errors_allowed}
     #{won_lost}
     END
